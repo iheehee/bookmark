@@ -14,15 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path
 from bookmarkapp.views import BookmarkLV, BookmarkDV
 
+app_name = 'bookmarkapp' 
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('bookmark/', include('bookmarkapp.urls')),
-    path('blog/', include('blog.urls')),
     
-    
-    #path('bookmark/', BookmarkLV.as_view(), name='index'),
-    #path('bookmark/<int:pk>/', BookmarkDV.as_view(), name='detail'),
+    path('', BookmarkLV.as_view(), name='index'),
+    path('<int:pk>/', BookmarkDV.as_view(), name='detail'),
 ]
