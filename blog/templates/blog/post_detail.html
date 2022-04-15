@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>{{ object.title }}</h2>
+    <p>
+         {% if object.get_previous %}
+         <a href="{{ object.get_previous.get_absolute_url }}" title="View previous post"> 
+             &laquo;-- {{ object.get_previous }}
+         </a>
+     
+         {% endif %}
+
+         {% if object.get_next %}
+         <a href="{{ object.get_next.get_absoloute_url }}" title="View previous post">  
+             {{ object.get_previous }} --&raquo; 
+         </a> 
+
+         {% endif %}    
+    </p>
+
+    <p>{{ object.modify_dt|date:"j F Y"}}</p>
+    <br>
+
+    <div>
+        {{ object.content|linebreaks }}
+    </div>
+</body>
+</html>
