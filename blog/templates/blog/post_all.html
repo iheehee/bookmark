@@ -1,39 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Blog List</h1>
-    <br>
 
-    {% for post in posts %}
+{% extends "base.html" %}
 
-        <h3><a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></h3>
-        {{ post.modify_dt|date:"N d, Y" }}
-        <p>{{ post.description }}</p>
-
-    {% endfor %}
+{% block title %}past_all.html{% endblock  %}
     
-    <br>
 
-    <div>
-        <span>
-            {% if page_obj.has_previous %}
-                <a href="?page={{ page_obj.previous_page_number }}">PreviousPage</a>               
-            {% endif %}
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pagees }} 
-                        
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">NextPage</a>
-                
-            {% endif %}
-                              
-        </span>
-    </div>
+{% block content %}
+<h1>Blog List</h1>
 
-</body>
-</html>
+
+<br>
+
+{% for post in posts %}
+
+    <h3><a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></h3>
+    {{ post.modify_dt|date:"N d, Y" }}
+    <p>{{ post.description }}</p>
+
+{% endfor %}
+
+<br>
+
+<div>
+    <span>
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">PreviousPage</a>               
+        {% endif %}
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pagees }} 
+                    
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">NextPage</a>
+            
+        {% endif %}
+                          
+    </span>
+</div>
+{% endblock  %}
+
+{% block footer %}
+<footer class="navbar navbar-dark fixed-bottom bg-secondary" style="height: 5%; justify-content: right; padding-right: 10px;"> 
+    <p style="color: white;">Blog Post,  Copyright &copy; 2022 DjangoBook by Iheehee</p>
+</footer>  
+{% endblock  %}

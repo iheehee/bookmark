@@ -1,34 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>{{ object.title }}</h2>
-    <p>
-         {% if object.get_previous %}
-         <a href="{{ object.get_previous.get_absolute_url }}" title="View previous post"> 
-             &laquo;-- {{ object.get_previous }}
-         </a>
+
+{% extends "base.html" %}
+
+{% block title %}past_archive_day.html{% endblock  %}
+    
+
+{% block content %}
+<h2>{{ object.title }}</h2>
+<p>
+
+     {% if object.get_next %}
+     <a href="{{ object.get_next.get_absolute_url }}" title="View next post">  
+        &laquo;-- {{ object.get_next }}   
+     </a> 
+
+     {% endif %}
      
-         {% endif %}
+     {% if object.get_previous %}
+     <a href="{{ object.get_previous.get_absolute_url }}" title="View previous post"> 
+         {{ object.get_previous }} --&raquo; 
+     </a>
+ 
+     {% endif %}
+</p>
 
-         {% if object.get_next %}
-         <a href="{{ object.get_next.get_absoloute_url }}" title="View previous post">  
-             {{ object.get_previous }} --&raquo; 
-         </a> 
+<p>{{ object.modify_dt|date:"j F Y"}}</p>
+<br>
 
-         {% endif %}    
-    </p>
+<div>
+    {{ object.content|linebreaks }}
+</div>
+{% endblock  %}
 
-    <p>{{ object.modify_dt|date:"j F Y"}}</p>
-    <br>
-
-    <div>
-        {{ object.content|linebreaks }}
-    </div>
-</body>
-</html>
+{% block footer %}
+<footer class="navbar navbar-dark fixed-bottom bg-secondary" style="height: 5%; justify-content: right; padding-right: 10px;"> 
+    <p style="color: white;">Blog Post,  Copyright &copy; 2022 DjangoBook by Iheehee</p>
+</footer>  
+{% endblock  %}
