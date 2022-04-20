@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bookmarkapp.apps.BookmarkappConfig',
     'blog.apps.BlogConfig',
+    'taggit.apps.TaggitAppConfig',
+    'taggit_templatetags2',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +124,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+TAGGIT_CASE_INSENSITIVE = True
+
+TAGGIT_LIMIT = 50

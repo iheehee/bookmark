@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 django = "==2.2.5"
+django-taggit = "*"
+django-taggit-templatetags2 = "*"
 
 [dev-packages]
 

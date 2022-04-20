@@ -1,24 +1,14 @@
 
 {% extends "base.html" %}
 
-{% block title %}past_all.html{% endblock  %}
+{% block title %}post_search.html{% endblock  %}
     
 
 {% block content %}
-<h1>Blog List</h1>
-
-
+<h1>Blog Search</h1>
 <br>
 
-{% for post in posts %}
-
-    <h3><a href='{{ post.get_absolute_url }}'>{{ post }}</a></h3>
-    {{ post.modify_dt|date:"N d, Y" }}
-    <p>{{ post.description }}</p>
-
-{% endfor %}
-
-<br>
+<form action="." method="post"></form>
 
 <div>
     <span>
