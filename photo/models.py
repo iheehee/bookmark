@@ -6,7 +6,7 @@ from django.urls import reverse
 
 class Album(models.Model):
     name = models.CharField(max_length=30)
-    describtion = models.CharField('One Line Description' ,max_length=100, blank=True)
+    description = models.CharField('One Line Description' ,max_length=100, blank=True)
 
     class Meta:
         ordering = ('name',)

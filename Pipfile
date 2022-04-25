@@ -7,6 +7,8 @@ name = "pypi"
 django = "==2.2.5"
 django-taggit = "*"
 django-taggit-templatetags2 = "*"
+django-widget-tweaks = "*"
+pillow = "*"
 
 [dev-packages]
 

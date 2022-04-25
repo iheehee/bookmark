@@ -22,11 +22,12 @@ app_name = 'bookmark'
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='ad'),
+
     path('', HomeView.as_view(), name='home'),
     path('bookmark/', include('bookmarkapp.urls')),
     path('blog/', include('blog.urls')),
-    
-    
+    #path('photo/', include('photo.urls')),
+       
     #path('bookmark/', BookmarkLV.as_view(), name='index'),
     #path('bookmark/<int:pk>/', BookmarkDV.as_view(), name='detail'),
 ]
