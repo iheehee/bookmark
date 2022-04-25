@@ -14,7 +14,7 @@ class PostLV(ListView) :
     template_name = 'blog/post_all.html'
     context_object_name = 'posts'
     paginate_by = 2
-
+    
 class PostDV(DetailView) :
     model = Post
     
@@ -48,7 +48,7 @@ class TaggedObjectLV(ListView):
 
     model = Post
     template_name = "taggit/taggit_post_list.html"
-
+   
     def get_queryset(self):
         return Post.objects.filter(tags__name=self.kwargs.get('tag'))
 
@@ -56,7 +56,8 @@ class TaggedObjectLV(ListView):
         context = super().get_context_data(**kwargs)
         context['tagname'] = self.kwargs['tag']
         return context
-        
+
+
 class SearchFormView(FormView):
     form_class = PostSearchForm
     template_name = 'blog/post_search.html'
@@ -70,7 +71,7 @@ class SearchFormView(FormView):
         context['form'] = form
         context['search_term'] = searchWord
         context['object_list'] = post_list
-
+    
         return render(self.request, self.template_name, context)
 
 

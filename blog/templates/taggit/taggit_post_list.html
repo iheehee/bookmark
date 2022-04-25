@@ -12,7 +12,7 @@
 {% for post in object_list %}
     <h2><a href='{{ post.get_absolute_url }}'>{{post.title}}</a></h2>
     {{ post.modify_dt|date:"N d, Y" }}
-    <p>{{ post.descriptiond }}</p>
+    <p>{{ post.description }}</p>
 
 {% endfor %}
 
