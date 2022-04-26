@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from bookmark.views import HomeView
-from bookmarkapp.views import BookmarkLV, BookmarkDV
+from django.conf.urls.static import static
+from django.conf import settings
 
-app_name = 'bookmark'
+from bookmark.views import HomeView
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='ad'),
@@ -26,8 +26,6 @@ urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('bookmark/', include('bookmarkapp.urls')),
     path('blog/', include('blog.urls')),
-    #path('photo/', include('photo.urls')),
-       
-    #path('bookmark/', BookmarkLV.as_view(), name='index'),
-    #path('bookmark/<int:pk>/', BookmarkDV.as_view(), name='detail'),
-]
+    path('photo/', include('photo.urls')),
+   
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
