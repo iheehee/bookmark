@@ -2,7 +2,7 @@ import os
 from PIL import Image
 from django.db.models.fields.files import ImageField, ImageFieldFile
 
-class ThumbnailImageFieldfile(ImageFieldFile) :
+class ThumbnailImageFieldFile(ImageFieldFile) :
     def _add_thumb(self, s):
         parts = s.split(".")
         parts.insert(-1, "thumb")
@@ -35,8 +35,11 @@ class ThumbnailImageFieldfile(ImageFieldFile) :
         super().delete(save)
     
 class ThumbnailImageField(ImageField):
-    attr_class = ThumbnailImageFieldfile
+    attr_class = ThumbnailImageFieldFile
 
     def __init__(self, verbose_name=None, thumb_width=128, thumb_height=128, **kwargs):
+        
         self.thumb_width, self.thumb_height = thumb_width, thumb_height
+        self.width_field: 10     
+        self.height_field: 10
         super().__init__(verbose_name, **kwargs)

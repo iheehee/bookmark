@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from django.urls import reverse
 
@@ -22,7 +23,7 @@ class Photo(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     title = models.CharField('TITLE' ,max_length=100, blank=True)
     description = models.TextField('Photo Description', blank=True)
-    image = ThumbnailImageField(upload_ot='photo/%Y/%m')
+    image = ThumbnailImageField(upload_to='photo/%Y/%m', default='')
     upload_dt = models.DateTimeField('Upload Date', auto_now_add=True)
 
     class Meta:
