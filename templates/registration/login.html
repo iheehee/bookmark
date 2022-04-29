@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}login.html{% endblock  %}
+
+{% block content %}
+
+    <h1>Please Login</h1>
+    <p><em>Pleas enter your id and password</em></p>
+
+    {% if form.errors %} 
+    <div class="alert alert-danger">
+        <div class="font-weight-bold">Wrong! Please correct the error(s) below.</div>
+        {{ form.errors }}
+    </div>
+    {% endif %}
+
+    <form action="." method="post" class="card pt-3">{% csrf_token %} 
+        <div class="form-group row">
+            {{ form.username|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
+        </div>
+    </form>
+
+{% endblock  %}
+
+
+{% block footer %}
+<footer class="navbar navbar-dark fixed-bottom bg-secondary" style="position:relative; height: 5%; justify-content: right; padding-right: 10px;">  
+    <p style="color: white;">HomeView,  Copyright &copy; 2022 DjangoBook by Iheehee</p></p>
+</footer>    
+{% endblock  %}
+    
+
+    

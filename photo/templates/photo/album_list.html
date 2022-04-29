@@ -7,17 +7,20 @@
     .thumbnail {
         border: 3px solid #ccc;
     }
+  
+    
 </style>
 {% endblock %}
 
 {% block content %}
 
+<div class="px-4">
 {% for item in object_list %}
     <div class="mt-5">
         <a class="h2" href="{% url 'photo:album_detail' item.id %}">
             {{ item.name }}
         </a>&emsp;
-        <span class="font-italic h5">{{ item.description }}</span>
+        <span class="font-italic h5"><em>{{ item.description }}</em></span>
     </div>
 
     <hr style="margin: 0 0 20px 0;">
@@ -38,7 +41,7 @@
     </div>
         
 {% endfor %}
-
+</div>
 {% endblock %}
     
 

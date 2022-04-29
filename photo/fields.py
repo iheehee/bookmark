@@ -29,7 +29,7 @@ class ThumbnailImageFieldFile(ImageFieldFile) :
         background.paste(img, box)
         background.save(self.thumb_path, 'JPEG')
 
-    def delete(self, save=True):
+    def delete(self, save=True):     
         if os.path.exists(self.thumb_path):
             os.remove(self.thumb_path)
         super().delete(save)
@@ -37,9 +37,7 @@ class ThumbnailImageFieldFile(ImageFieldFile) :
 class ThumbnailImageField(ImageField):
     attr_class = ThumbnailImageFieldFile
 
-    def __init__(self, verbose_name=None, thumb_width=128, thumb_height=128, **kwargs):
+    def __init__(self, verbose_name=None, thumb_width=170, thumb_height=170, **kwargs):
         
         self.thumb_width, self.thumb_height = thumb_width, thumb_height
-        self.width_field: 10     
-        self.height_field: 10
-        super().__init__(verbose_name, **kwargs)
+        super().__init__(verbose_name, **kwargs) #이미지 필드의 초기 값을 오버라이딩하였고 추가적인 너비 높이 값 인자를 객체와 함께 보낸다.
