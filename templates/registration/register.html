@@ -2,12 +2,12 @@
 
 {% load widget_tweaks %}
 
-{% block title %}login.html{% endblock  %}
+{% block title %}register.html{% endblock  %}
 
 {% block content %}
 
-    <h1>Please Login</h1>
-    <p><em>Pleas enter your id and password</em></p>
+    <h1>New User Registration</h1>
+    <p><em>Pleas enter yourname and password twice.</em></p>
 
     {% if form.errors %} 
     <div class="alert alert-danger">
@@ -24,18 +24,24 @@
             </div>
         </div>
         <div class="form-group row">
-            {{ form.password|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
+            {{ form.password1|add_label_class:"col-form-label col-sm ml-3 font-weight-bold" }}
             <div class="col-sm-5">
-                {{ form.password|add_class:"form-control" }}
+                {{ form.password1|add_class:"form-control" }}
             </div>
         </div>
-        
+        <div class="form-group row">
+            {{ form.password2|add_label_class:"col-form-label col-sm ml-3 font-weight-bold" }}
+            <div class="col-sm-5">
+                {{ form.password2|add_class:"form-control" }}
+            </div>
+        </div>
+
         <div class="form-group">
             <div class="offset-sm-2 col-sm-5">
-                <input type="submit" value="Log in" class="btn btn-info"/>
-                <input type="hidden" name="next" value="{{ next }}" />
+                <input type="submit" value="Register" class="btn btn-info"/>
             </div>    
         </div>
+
     </form>
 
 {% endblock  %}
