@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from taggit.managers import TaggableManager
+from django.contrib.auth.models import User
 
 
 class Post(models.Model):
@@ -10,6 +11,7 @@ class Post(models.Model):
     create_dt = models.DateTimeField('CREATE DATE', auto_now_add=True)
     modify_dt = models.DateTimeField('MODIFY DATE', auto_now=True)
     tags = TaggableManager(blank=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='OWNER', blank=True, null=True)
 
     class Meta:
         verbose_name = 'post'
@@ -29,3 +31,9 @@ class Post(models.Model):
     def get_next(self):
         return self.get_next_by_modify_dt()
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+
+
+    
