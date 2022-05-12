@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='ad'),
 
     path('', HomeView.as_view(), name='home'),
-    path('bookmark/', include('bookmarkapp.urls')),
+    path('bookmark/', include('bookmarkapp.urls', namespace='bookmark')), #namespace 이름이 겹치는 것을 방지함
     path('blog/', include('blog.urls')),
     path('photo/', include('photo.urls')),
     path('accounts/', include('django.contrib.auth.urls')),

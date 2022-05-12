@@ -24,7 +24,7 @@ class OwnerOnlyMixin(AccessMixin):
         obj = self.get_object()
         if request.user != obj.owner:
             return self.handle_no_permission()
-        return super.dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
         
          
         

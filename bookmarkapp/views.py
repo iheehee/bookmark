@@ -22,13 +22,13 @@ class BookmarkCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
     
 class BookmarkChangeLV(LoginRequiredMixin, ListView):
-    template_name = 'bookmark/bookmark_change_list.html'
+    template_name = 'bookmarkapp/bookmarkapp_change_list.html'
 
     def get_queryset(self):
         return Bookmarkapp.objects.filter(owner=self.request.user)
 
 class BookmarkUpdateView(OwnerOnlyMixin, UpdateView):
-    model=Bookmarkapp
+    model = Bookmarkapp
     fields = ['title', 'url']
     success_url = reverse_lazy('bookmark:index')
 
